@@ -64,8 +64,8 @@
         [self.picImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.contentView.mas_right).offset(-20);
             make.top.equalTo(self.tagView.mas_bottom).offset(50);
-            make.width.equalTo(@0);
-            make.height.equalTo(@0);
+            make.width.equalTo(@90);
+            make.height.equalTo(@90);
         }];
         
         [self.picImageView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
@@ -183,12 +183,18 @@
         }];
     }
     
+    if (model.content.length == 0 || [model.content isEqualToString:@""]) {
+        [self.collectionControl mas_updateConstraints:^(MASConstraintMaker *make) {
+            [make.top.greaterThanOrEqualTo(self.contentLabel.mas_bottom).offset(-10) priorityMedium];
+        }];
+    }
+    
+    [self.collectionControl mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.contentView.mas_bottom);
+    }];
+    
     self.titleLabel.text = model.title;
     self.contentLabel.text = model.content;
-    
-    for (UIView * view in [self.contentView subviews]) {
-        [view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    }
 }
 
 

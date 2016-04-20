@@ -91,7 +91,7 @@ UITableViewDelegate
             MDPSubscribeModel * model = [[MDPSubscribeModel alloc] init];
             model.hasTag = (i % 3 == 2);
             model.title = [NSString stringWithFormat:@"%zd%@", i, [str substringToIndex:i]];
-            model.content = [str substringFromIndex:i];
+            model.content = @"";
             model.hasPic = (i % 5 == 3);
             model.type = ((i % 2 == 0) ? 1 : 2);
             [_dataSourceArr addObject:model];
